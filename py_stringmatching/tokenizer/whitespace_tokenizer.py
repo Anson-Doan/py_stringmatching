@@ -9,10 +9,12 @@ class WhitespaceTokenizer(DelimiterTokenizer):
 
     Parameters:
         return_set (boolean): flag to indicate whether to return a set of
-                              tokens. (defaults to False) 
+                              tokens. (defaults to False)
+        is_lowercase (boolean): flag to indicate whether to convert the input
+                              to all lowercase. (defaults to False)
     """
-    def __init__(self, return_set=False):
-        super(WhitespaceTokenizer, self).__init__(set(), return_set)
+    def __init__(self, return_set=False, is_lowercase=False):
+        super(WhitespaceTokenizer, self).__init__(set(), return_set, is_lowercase)
 
     def tokenize(self, input_string):
         """
@@ -42,6 +44,9 @@ class WhitespaceTokenizer(DelimiterTokenizer):
         """
         utils.tok_check_for_none(input_string)
         utils.tok_check_for_string_input(input_string)
+
+        if self.is_lowercase:
+            input_string = input_string.lower()
 
         token_list =  list(filter(None, input_string.split()))
 

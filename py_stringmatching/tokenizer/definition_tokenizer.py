@@ -8,7 +8,9 @@ class DefinitionTokenizer(Tokenizer):
 
     Parameters:
         return_set (boolean): flag to indicate whether to return a set of
-                              tokens. (defaults to False) 
+                              tokens. (defaults to False)
+        is_lowercase (boolean): flag to indicate whether to convert the input
+                              to all lowercase. (defaults to False)
     """
-    def __init__(self, return_set=False):
-        super(DefinitionTokenizer, self).__init__(return_set)
+    def __init__(self, return_set=False, is_lowercase=False):
+        super(DefinitionTokenizer, self).__init__(return_set, is_lowercase)

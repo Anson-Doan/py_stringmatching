@@ -12,15 +12,17 @@ class DelimiterTokenizer(Tokenizer):
     Parameters:
         delim_set (set): set of delimiter strings (defaults to space delimiter)
         return_set (boolean): flag to indicate whether to return a set of
-                              tokens. (defaults to False) 
+                              tokens. (defaults to False)
+        is_lowercase (boolean): flag to indicate whether to convert the input
+                              to all lowercase. (defaults to False)
     """
-    def __init__(self, delim_set=set([' ']), return_set=False):
+    def __init__(self, delim_set=set([' ']), return_set=False, is_lowercase=False):
         self.__delim_set = None
         self.__use_split = None
         self.__delim_str = None
         self.__delim_regex = None
         self.set_delim_set(delim_set)
-        super(DelimiterTokenizer, self).__init__(return_set)
+        super(DelimiterTokenizer, self).__init__(return_set, is_lowercase)
 
     def tokenize(self, input_string):
         """
@@ -52,6 +54,9 @@ class DelimiterTokenizer(Tokenizer):
         """
         utils.tok_check_for_none(input_string)
         utils.tok_check_for_string_input(input_string)
+
+        if self.is_lowercase:
+            input_string = input_string.lower()
     
         if self.__use_split:
             token_list = list(filter(None,
