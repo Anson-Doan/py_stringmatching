@@ -38,11 +38,11 @@ class Tokenizer(object):
         """
         return self.is_lowercase
 
-    def set_return_set(self, is_lowercase):
+    def set_is_lowercase(self, is_lowercase):
         """Set the is_lowercase flag.
 
         Args:
-            return_set (boolean): flag to indicate whether to convert input to all lowercase.
+            is_lowercase (boolean): flag to indicate whether to convert input to all lowercase.
         """
         self.is_lowercase = is_lowercase
         return True
